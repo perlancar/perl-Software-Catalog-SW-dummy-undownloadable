@@ -27,8 +27,15 @@ sub get_latest_version {
     [200, "OK", "1.0.0"];
 }
 
-# version
-# arch
+sub canon2native_arch_map {
+    return +{
+        'linux-x86'    => 'linux-x86',
+        'linux-x86_64' => 'linux-x86_64',
+        'win32'        => 'win32',
+        'win64'        => 'win64',
+    };
+}
+
 sub get_download_url {
     my ($self, %args) = @_;
 
