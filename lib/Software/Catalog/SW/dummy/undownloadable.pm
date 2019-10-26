@@ -15,13 +15,9 @@ with 'Software::Catalog::Role::Software';
 
 use Software::Catalog::Util qw(extract_from_url);
 
-sub meta {
-    return {
-        homepage_url => "https://example.com/",
-    };
-}
+sub homepage_url { "https://example.com/" }
 
-sub get_latest_version {
+sub latest_version {
     my ($self, %args) = @_;
 
     [200, "OK", "1.0.0"];
@@ -36,13 +32,13 @@ sub canon2native_arch_map {
     };
 }
 
-sub get_download_url {
+sub download_url {
     my ($self, %args) = @_;
 
     [200, "OK", "invalid://dummy-undownloadable-1.0.0.tar.gz"];
 }
 
-sub get_archive_info {
+sub archive_info {
     my ($self, %args) = @_;
     [200, "OK", {
         programs => [],
