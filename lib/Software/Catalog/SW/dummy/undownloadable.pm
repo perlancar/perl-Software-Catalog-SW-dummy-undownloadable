@@ -1,6 +1,8 @@
 package Software::Catalog::SW::dummy::undownloadable;
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use 5.010001;
@@ -15,12 +17,13 @@ with 'Software::Catalog::Role::Software';
 
 use Software::Catalog::Util qw(extract_from_url);
 
-sub homepage_url { "https://example.com/" }
+sub available_versions { [501, "Not implemented"] }
 
-sub latest_version {
+sub archive_info {
     my ($self, %args) = @_;
-
-    [200, "OK", "1.0.0"];
+    [200, "OK", {
+        programs => [],
+    }];
 }
 
 sub canon2native_arch_map {
@@ -38,12 +41,17 @@ sub download_url {
     [200, "OK", "invalid://dummy-undownloadable-1.0.0.tar.gz"];
 }
 
-sub archive_info {
+sub homepage_url { "https://example.com/" }
+
+sub is_dedicated_profile { 0 }
+
+sub latest_version {
     my ($self, %args) = @_;
-    [200, "OK", {
-        programs => [],
-    }];
+
+    [200, "OK", "1.0.0"];
 }
+
+sub release_note { [501, "Not implemented"] }
 
 1;
 # ABSTRACT: A dummy software that is undownloadable
